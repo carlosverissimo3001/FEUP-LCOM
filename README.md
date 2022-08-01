@@ -1,9 +1,8 @@
-# LCOM Project
+# FEUP-PROG1-2020
+Practical work developed in Computer Laboratory Class
 
-LCOM Project for group T3/g02
+Class Syllabus [@FEUP](https://sigarra.up.pt/feup/en/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=459473)
 
-Group members:
-
-1. Carlos Veríssimo (up201907716@fe.up.pt)
-2. João Cunha (up201403343@fe.up.pt)
-3. Gabriel Ferreira (up201906072@fe.up.pt)
+| **Year** | **Term**  | **Course** | **Final Grade** |
+|   ---    |    ---    |    ---     |    ---          |
+| 2nd | 1st | Master in Informatics and Computing Engineering| N/A |
