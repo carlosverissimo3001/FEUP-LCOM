@@ -1,0 +1,4232 @@
+@lcflib.a:2019, lcf_start
+  video_test_move(xpm, xi, yi, xf, yf, speed, fps)
+> video_test_move(0x81e2f7c, 900, 0, 0, 0, 50, 60)
+  @lab5.c:328, video_test_move
+    vg_init(COLOR_MODE_INDEXED)
+  > vg_init(0x105)
+    @vcard.c:37, vg_init
+      vbe_get_mode_info(mode, &vmi_p)
+    > vbe_get_mode_info(0x105, addr: 0xeffff3b0)
+    < vbe_get_mode_info(0x105, addr: 0xeffff3b0 [0xe0000000, 1024x768, Indexed (8 BPP) <768 KiB>]) -> (ret: 0)
+    @vcard.c:106, map_VRAM
+      sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr)
+    > sys_privctl(SELF, SYS_PRIV_ADD_MEM, addr: 0x824c608 [0xe0000000 - 0xe00c0000 <768 KiB>])
+    < sys_privctl(SELF, SYS_PRIV_ADD_MEM, &mr) -> (ret: 0)
+    @vcard.c:110, map_VRAM
+      vm_map_phys(SELF, (void*)mr.mr_base, vram_size)
+    < vm_map_phys(SELF, addr: 0xe0000000, 768 KiB) -> (ret: 0xef93b000)
+    @vcard.c:132, set_vbe_mode
+      sys_int86(&r86)
+    > sys_int86(addr: 0xeffff348 [AX: 4f02, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000])
+    < sys_int86(addr: 0xeffff348 [AX: 004f, BX: 4105, CX: 0000, DX: 0000, ES: 0000, DI: 0000]) -> (ret: 0)
+  < vg_init(0x105) -> (ret: 0xef93b000)
+  @lab5.c:339, video_test_move
+    timer_subscribe_int(&timer_hook_id)
+  > timer_subscribe_int(addr: 0xeffff62b [8])
+    @timer_int.c:17, timer_subscribe_int
+      sys_irqsetpolicy(TIMER0_IRQ, IRQ_REENABLE, &timer_hook_id)
+    > sys_irqsetpolicy(0, 1, addr: 0x8230818 [0])
+    < sys_irqsetpolicy(0, 1, addr: 0x8230818 [10]) -> (ret: 0)
+  < timer_subscribe_int(addr: 0xeffff62b [0]) -> (ret: 0)
+  @kbc_int.c:16, kbc_subscribe_int
+    sys_irqsetpolicy(KBC_IRQ, IRQ_REENABLE | IRQ_EXCLUSIVE, &hook_id)
+  > sys_irqsetpolicy(1, 3, addr: 0x822fb9c [1])
+  < sys_irqsetpolicy(1, 3, addr: 0x822fb9c [11]) -> (ret: 0)
+  @sprite.c:14, create_sprite
+    xpm_load(xpm, XPM_INDEXED, &img)
+  > xpm_load(addr: 0x81e2f7c, XPM_INDEXED, addr: 0xeffff560)
+  < xpm_load(addr: 0x81e2f7c, XPM_INDEXED, addr: 0xeffff560 [64x64 : 4096 bytes]) -> (ret: 0x8252000)
+  @lab5.c:457, video_test_move
+    xpm_load(xpm, XPM_INDEXED, &img_move)
+  > xpm_load(addr: 0x81e2f7c, XPM_INDEXED, addr: 0xeffff618)
+  < xpm_load(addr: 0x81e2f7c, XPM_INDEXED, addr: 0xeffff618 [64x64 : 4096 bytes]) -> (ret: 0x8253000)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(900, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(900, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(900, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(850, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(850, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(850, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(800, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(800, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(800, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:492, video_test_move
+    kbc_ih()
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &lst)
+    > sys_inb(0x64, addr: 0xeffff4b8)
+    < sys_inb(0x64, addr: 0xeffff4b8 [0x1d = 0b00011101])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &lst)
+    > sys_inb(0x60, addr: 0xeffff4b8)
+    < sys_inb(0x60, addr: 0xeffff4b8 [0x9c = 0b10011100])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &lst)
+    > sys_inb(0x64, addr: 0xeffff4b8)
+    < sys_inb(0x64, addr: 0xeffff4b8 [0x1c = 0b00011100])
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(750, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(750, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(750, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(700, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(700, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(700, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(650, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(650, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(650, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(600, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(600, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(600, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(550, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(550, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(550, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(500, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(500, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(500, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(450, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(450, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(450, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(400, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(400, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(400, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(350, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(350, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(350, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(300, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(300, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(300, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(250, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(250, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(250, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(200, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(200, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(200, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(150, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(150, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(150, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(100, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(100, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(100, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @sprite.c:61, erase_sprite
+    vg_draw_rectangle(sp->x, sp->y, sp->width, sp->height, 0)
+  > vg_draw_rectangle(50, 0, 64, 64, 0x00000000 [0])
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 0, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 1, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 2, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 3, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 4, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 5, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 6, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 7, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 8, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 9, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 10, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 11, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 12, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 13, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 14, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 15, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 16, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 17, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 18, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 19, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 20, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 21, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 22, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 23, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 24, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 25, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 26, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 27, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 28, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 29, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 30, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 31, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 32, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 33, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 34, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 35, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 36, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 37, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 38, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 39, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 40, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 41, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 42, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 43, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 44, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 45, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 46, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 47, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 48, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 49, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 50, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 51, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 52, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 53, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 54, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 55, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 56, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 57, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 58, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 59, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 60, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 61, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 62, 64, 0x00000000 [0]) -> (ret: 0)
+    @vcard.c:94, vg_draw_rectangle
+      vg_draw_hline(x, i, width, color)
+    < vg_draw_hline(50, 63, 64, 0x00000000 [0]) -> (ret: 0)
+  < vg_draw_rectangle(50, 0, 64, 64, 0x00000000 [0]) -> (ret: 0)
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:492, video_test_move
+    kbc_ih()
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &lst)
+    > sys_inb(0x64, addr: 0xeffff4b8)
+    < sys_inb(0x64, addr: 0xeffff4b8 [0x1d = 0b00011101])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &lst)
+    > sys_inb(0x60, addr: 0xeffff4b8)
+    < sys_inb(0x60, addr: 0xeffff4b8 [0x01 = 0b00000001])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &lst)
+    > sys_inb(0x64, addr: 0xeffff4b8)
+    < sys_inb(0x64, addr: 0xeffff4b8 [0x1c = 0b00011100])
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000001]>)
+  @lab5.c:504, video_test_move
+    timer_int_handler()
+  @lab5.c:484, video_test_move
+    driver_receive(ANY, &msg, &ipc_status)
+  > driver_receive(ANY, addr: 0xeffff5d0, addr: 0xeffff614)
+  < driver_receive(<[HARDWARE: 0b0000000000000000000000000000000000000000000000000000000000000010]>)
+  @lab5.c:492, video_test_move
+    kbc_ih()
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &lst)
+    > sys_inb(0x64, addr: 0xeffff4b8)
+    < sys_inb(0x64, addr: 0xeffff4b8 [0x1d = 0b00011101])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &lst)
+    > sys_inb(0x60, addr: 0xeffff4b8)
+    < sys_inb(0x60, addr: 0xeffff4b8 [0x81 = 0b10000001])
+    @utils.c:18, util_sys_inb
+      sys_inb(port, &lst)
+    > sys_inb(0x64, addr: 0xeffff4b8)
+    < sys_inb(0x64, addr: 0xeffff4b8 [0x1c = 0b00011100])
+  @kbc_int.c:52, kbc_unsubscribe_int
+    sys_irqrmpolicy(&hook_id)
+  > sys_irqrmpolicy(addr: 0x822fb9c [11])
+  < sys_irqrmpolicy(addr: 0x822fb9c [11]) -> (ret: 0)
+  @lab5.c:570, video_test_move
+    timer_unsubscribe_int()
+    @timer_int.c:22, timer_unsubscribe_int
+      sys_irqrmpolicy(&timer_hook_id)
+    > sys_irqrmpolicy(addr: 0x8230818 [10])
+    < sys_irqrmpolicy(addr: 0x8230818 [10]) -> (ret: 0)
+  @lab5.c:579, video_test_move
+    vg_exit()
+  < vg_exit() -> (ret: 0)
+< video_test_move(0x81e2f7c, 900, 0, 0, 0, 50, 60) -> (ret: 0)
