@@ -1,5 +1,5 @@
 # FEUP-PROG1-2020
-Practical work developed in Computer Laboratory Class
+Practical work developed in **Computer Laboratory** Class
 
 Class Syllabus [@FEUP](https://sigarra.up.pt/feup/en/ucurr_geral.ficha_uc_view?pv_ocorrencia_id=459473)
 
